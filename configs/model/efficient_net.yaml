@@ -1,0 +1,21 @@
+_target_: src.models.base_module.BaseModule
+net:
+  _target_: src.models.efficient_net_module.Efficient_Net
+  classes: ['NRG', 'RG']
+
+loss_fn:
+  _target_: monai.losses.FocalLoss
+  to_onehot_y: true
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 1.0e-4
+
+data_dir: # !TODO path to your preprocessed data dir which consists train,validation,test folders inside
+
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  factor: 0.3
+  patience: 5

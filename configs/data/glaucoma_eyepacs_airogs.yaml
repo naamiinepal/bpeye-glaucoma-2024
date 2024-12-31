@@ -1,0 +1,8 @@
+_target_: src.data.glaucoma_eyepacs_airogs.GlaucomaEyepacsModule
+# data_dir: ${paths.data_dir}
+batch_size: 32 # Needs to be divisible by the number of devices (e.g., if in a distributed setup)
+num_workers: 4
+pin_memory: False
+# change root dir from efficient_net.yaml too
+data_dir: # !TODO path to your preprocessed data dir which consists train,validation,test folders inside
+classes: ['NRG', 'RG']
